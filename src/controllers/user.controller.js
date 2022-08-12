@@ -9,9 +9,11 @@ const create = (req, res) => {
     message: "User create successfully",
     user: {
       name,
-      user,
+      username,
       email,
-    }
+      avatar,
+      background,
+    },
   });
 };
 
