@@ -1,9 +1,20 @@
-const soma = (req, res) => {
-  const soma = 1 + 1;
-  //send = metodo da resposta de um servidor/api
-  res.send({ soma: soma });
+const create = (req, res) => {
+  const { name, user, email, password } = req.body;
+
+  if (!name || !user || !email || !password) {
+    res.status(400).send({ message: "Submit all fields to registration" });
+  }
+
+  res.status(201).send({
+    message: "User create successfully",
+    user: {
+      name,
+      user,
+      email,
+    }
+  });
 };
 
 module.exports = {
-  soma,
+  create,
 };
