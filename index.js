@@ -1,13 +1,9 @@
 const express = require("express");
+const userRoute = require("./src/routes/user.route");
+const port = 3000;
 
 const app = express();
 
-//get pega e recebe algo
-//callback function = função que funciona atras de outra função
-//arrow function = função anonima
-app.get("/", (req, res) => {
-  //send = metodo da resposta de um servidor/api
-  res.send("Hello World")
-});
+app.use("/soma", userRoute);
 
-app.listen(3000);
+app.listen(3000, () => console.log(`Servidor rodando na porta ${port}`));
