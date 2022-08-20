@@ -11,7 +11,9 @@ const connectDatabase = () => {
         useUnifiedTopology: true,
       }
     )
+    //se der certo
     .then(() => console.log("MongoDB Atlas Connected"))
+    //se der errado
     .catch((error) => console.log(error));
 };
 
