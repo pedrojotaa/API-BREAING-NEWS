@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 //Instancioaum novo schema
 const userSchema = mongoose.Schema({
@@ -34,4 +34,4 @@ const userSchema = mongoose.Schema({
 //nome model/ de onde vem a model
 const User = mongoose.model("User", userSchema);
 
-module.exports = User;
+export default User;
