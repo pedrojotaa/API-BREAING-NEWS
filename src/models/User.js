@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
+import bcrypt from "bcrypt";
 
 //Instancioaum novo schema
-const userSchema = mongoose.Schema({
+const UserSchema = mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -30,8 +31,13 @@ const userSchema = mongoose.Schema({
   },
 });
 
+UserSchema.pre("save", function (next) {
+  this.password = bcrypt.hash(this.password, 10);
+  next();
+});
+
 //Define o Schema
 //nome model/ de onde vem a model
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model("User", UserSchema);
 
 export default User;
