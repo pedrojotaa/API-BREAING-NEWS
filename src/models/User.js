@@ -16,10 +16,12 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true,
     unique: true,
+    lowercase: true,
   },
   password: {
     type: String,
     required: true,
+    select: false,
   },
   avatar: {
     type: String,
@@ -31,8 +33,8 @@ const UserSchema = mongoose.Schema({
   },
 });
 
-UserSchema.pre("save", function (next) {
-  this.password = bcrypt.hash(this.password, 10);
+UserSchema.pre("save", async function (next) {
+  this.password = await bcrypt.hash(this.password, 10);
   next();
 });
 
