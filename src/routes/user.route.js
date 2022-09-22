@@ -1,9 +1,10 @@
 // Cria rotas fora do arquivo principal
-import express from "express";
+import { Router } from "express";
+
 import userController from "../controllers/user.controller.js";
 import { validId, validUser } from "../middlewares/global.middlewares.js";
 
-const route = express.Router();
+const route = Router();
 
 route.post("/", userController.create);
 
